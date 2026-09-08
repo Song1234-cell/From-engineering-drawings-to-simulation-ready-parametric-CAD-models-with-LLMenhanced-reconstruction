@@ -1,6 +1,6 @@
 # From engineering drawings to simulation-ready parametric CAD models with LLM-enhanced reconstruction
 
-[![Cover](./assets/poster.png)](https://song1234-cell.github.io/BINYI-Project/)
+[![Cover](./poster.png)](https://song1234-cell.github.io/BINYI-Project/)
 
 ## Abstract
 
