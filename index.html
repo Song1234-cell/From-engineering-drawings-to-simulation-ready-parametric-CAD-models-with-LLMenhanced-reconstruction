@@ -3,51 +3,183 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BINYI-Project</title>
+  <title>BINYI Project</title>
   <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: rgba(255, 255, 255, 0.86);
+      --text: #172033;
+      --muted: #5c677d;
+      --line: rgba(23, 32, 51, 0.10);
+      --accent: #275efe;
+      --accent-soft: rgba(39, 94, 254, 0.10);
+      --shadow: 0 18px 50px rgba(15, 23, 42, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 40px 20px;
-      background: #f7f7f7;
-      color: #222;
+      background:
+        radial-gradient(circle at top left, #e8f0ff 0, transparent 34%),
+        radial-gradient(circle at top right, #eef7ff 0, transparent 28%),
+        var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
     }
-    .wrap {
-      max-width: 900px;
+
+    .page {
+      max-width: 980px;
       margin: 0 auto;
-      background: white;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      padding: 40px 20px 56px;
     }
-    video {
+
+    .hero {
+      padding: 30px 28px 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), var(--card));
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 78ch;
+    }
+
+    .section {
+      margin-top: 22px;
+      padding: 24px 26px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.78);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .section p {
+      margin: 0;
+      color: var(--text);
+      font-size: 15.5px;
+    }
+
+    .video-wrap {
+      margin-top: 18px;
+      max-width: 760px;
       width: 100%;
-      margin-top: 20px;
+      border-radius: 18px;
+      overflow: hidden;
       background: #000;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 430px;
+      background: #000;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: #fff;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .footnote {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 18px 12px 36px; }
+      .hero, .section { padding: 20px 16px; border-radius: 18px; }
+      .video-wrap { max-width: 100%; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>From engineering drawings to simulation-ready parametric CAD models with LLM-enhanced reconstruction</h1>
-    <p>
-      Constructing accurate parametric three-dimensional CAD models is a prerequisite for downstream engineering tasks such as finite-element analysis (FEA), computational fluid dynamics (CFD), automated fabrication, and digital-twin updating...
-    </p>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Project Demo</div>
+      <h1>From engineering drawings to simulation-ready parametric CAD models with LLM-enhanced reconstruction</h1>
+      <p class="subtitle">
+        An LLM-enhanced reconstruction framework for turning engineering drawings into editable,
+        executable, and simulation-ready parametric CAD models.
+      </p>
+    </section>
 
-    <h2>Demo Video</h2
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</body>
-</html>
+    <section class="section">
+      <h2>Abstract</h2>
+      <p>
+        Constructing accurate parametric three-dimensional CAD models is a prerequisite for downstream engineering tasks such as finite-element analysis (FEA), computational fluid dynamics (CFD), automated fabrication, and digital-twin updating, yet it remains one of the most labor-intensive and expertise-dependent stages in engineering workflows. Existing end-to-end deep-learning approaches for reconstructing parametric CAD models from engineering drawings remain brittle, as small errors in predicted commands or geometric parameters can lead to invalid CAD geometry. Here, we develop an LLM-enhanced reconstruction framework that combines multi-view drawing-to-CAD prediction with a multimodal post-correction for topology repair and local geometric refinement. Evaluated on our self-developed Struct-Bench, which contains 4,258 paired samples from 12 representative families of steel structural members and connections, the proposed post-correction framework reduces the invalid rate from 10.62% to 6.42% and increases command accuracy from 96.25% to 97.95% compared with the end-to-end backbone. Finally, the reconstructed models are integrated into an agent-assisted FE workflow, mitigating the geometric and analysis errors associated with unconstrained LLM generation. These results demonstrate a practical route from engineering drawings to editable, executable, and simulation-ready parametric CAD models.
+      </p>
+    </section>
 
-    </p>
-
-    <h2>Demo Video</h2>
-    <video controls>
-      <source src="./demo.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
+    <section class="section">
+      <h2>Demo Video</h2>
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="./demo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="footnote">
+        视频文件名必须和这里的路径一致：<code>demo.mp4</code>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
